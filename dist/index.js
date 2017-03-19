@@ -8,38 +8,39 @@ var rootNode;
 function PhoneList() {
     var numberOftestCases = +readline();
     while (numberOftestCases--) {
-        // *************** TEST CASE ***************
-        rootNode = {};
+        // *************** TEST CASE LEVEL ***************
+        rootNode = {}; // 1.1
         var isTestCaseValid = true;
         var numberOfPhones_1 = +readline();
         while (numberOfPhones_1--) {
             var phoneNumber_1 = readline();
-            // ************ PHONE ************
-            var currentNodee = rootNode;
-            var isNumberValid = false;
+            if (!isTestCaseValid)
+                continue;
+            // ************ PHONE NUMBER LEVEL ************
+            var currentNode = rootNode;
+            var newNodeHasBeenAdded = false;
             var numberLength = phoneNumber_1.length;
             var i = 0;
             while (i < numberLength) {
-                // ************ DIGIT ************
+                // ************ DIGIT LEVEL ************
                 var digit = phoneNumber_1[i];
-                if (!currentNodee[digit]) {
-                    var lastNodee = (i === numberLength - 1)
-                        ? { terminal: true }
-                        : {};
-                    currentNodee[digit] = lastNodee;
-                    currentNodee = currentNodee[digit]; // REASSIGN
-                    isNumberValid = true;
+                if (!currentNode[digit]) {
+                    var nextNode = { terminal: i === numberLength - 1 }; // 1.2
+                    currentNode[digit] = nextNode;
+                    currentNode = currentNode[digit]; // Reassign nodes
+                    newNodeHasBeenAdded = true;
                 }
                 else {
-                    currentNodee = currentNodee[digit];
-                    if (currentNodee.terminal) {
-                        isTestCaseValid = false;
+                    currentNode = currentNode[digit]; // Reassign nodes
+                    if (currentNode.terminal) {
+                        isTestCaseValid = false; // 2.2, terminal node found
+                        break;
                     }
                 }
                 i++;
             }
             // ********* NUMBER HAS BEEN HANDLED *********
-            if (!isNumberValid) {
+            if (!newNodeHasBeenAdded) {
                 isTestCaseValid = false;
                 continue;
             }

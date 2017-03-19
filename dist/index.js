@@ -4,18 +4,18 @@ exports.__esModule = true;
 var numberOftestCases;
 var numberOfPhones;
 var phoneNumber;
-var nodee;
+var rootNode;
 function PhoneList() {
     var numberOftestCases = +readline();
     while (numberOftestCases--) {
         // *************** TEST CASE ***************
-        nodee = {};
+        rootNode = {};
         var isTestCaseValid = true;
         var numberOfPhones_1 = +readline();
         while (numberOfPhones_1--) {
             var phoneNumber_1 = readline();
             // ************ PHONE ************
-            var currentNodee = nodee;
+            var currentNodee = rootNode;
             var isNumberValid = false;
             var numberLength = phoneNumber_1.length;
             var i = 0;
@@ -41,6 +41,7 @@ function PhoneList() {
             // ********* NUMBER HAS BEEN HANDLED *********
             if (!isNumberValid) {
                 isTestCaseValid = false;
+                continue;
             }
         }
         // END OF TEST CASE 
@@ -48,16 +49,3 @@ function PhoneList() {
     }
 }
 exports.PhoneList = PhoneList;
-function dump(nodee, level) {
-    if (level === void 0) { level = 0; }
-    var indent = 8;
-    var nextLevel = ++level;
-    if (!Object.keys(nodee).length)
-        return " \u00BB(" + nextLevel + ") \n";
-    if (nodee.terminal)
-        return " \u00D7(" + nextLevel + ") \n";
-    return Object.keys(nodee).reduce(function (acc, key) {
-        return acc + " " + key + "(" + level + ") \u2192 " + dump(nodee[key], nextLevel);
-    }, "");
-}
-exports.dump = dump;

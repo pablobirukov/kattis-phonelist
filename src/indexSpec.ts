@@ -1,5 +1,6 @@
 /// <reference path="./std.d.ts" />
-import { PhoneList, dump, Nodee } from "./index";
+import { PhoneList } from ".";
+import { dump } from "./dump";
 
 const mock = [
     "2",

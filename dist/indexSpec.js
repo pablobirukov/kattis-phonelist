@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 /// <reference path="./std.d.ts" />
-var index_1 = require("./index");
+var _1 = require(".");
 var mock = [
     "2",
     "3",
@@ -28,7 +28,7 @@ beforeEach(function () {
 });
 describe("PhoneList", function () {
     it("is defined", function () {
-        index_1.PhoneList();
+        _1.PhoneList();
         expect(output).toEqual(["NO", "YES"]);
         // expect(PhoneList).toBeDefined();
     });

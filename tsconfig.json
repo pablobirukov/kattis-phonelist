@@ -3,6 +3,7 @@
         "outDir": "./dist/"
     },
     "include": [
+        "src/std.d.ts",
         "src/**/*"
     ]
 }

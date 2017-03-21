@@ -33,33 +33,28 @@ export type DigitNode = {
     8?: DigitNode;
     9?: DigitNode;
     terminal?: boolean;
-}
-let numberOftestCases
-let numberOfPhones
-let phoneNumber
-let rootNode: DigitNode
+};
 
-export function PhoneList() {
+export default function () {
     let numberOftestCases = +readline();
     while (numberOftestCases--) {
         // *************** TEST CASE LEVEL ***************
-
-        rootNode = {}; // 1.1
+        const rootNode: DigitNode = {}; // 1.1
         let isTestCaseValid = true;
-        let numberOfPhones = +readline();
-        while (numberOfPhones--) {
-            let phoneNumber = readline();
+        let numberOfPhonesNumbers = +readline();
+        while (numberOfPhonesNumbers--) {
+            const phoneNumber = readline();
             if (!isTestCaseValid) continue;
             // ************ PHONE NUMBER LEVEL ************
             let currentNode = rootNode;
             let newNodeHasBeenAdded = false;
-            let numberLength = phoneNumber.length;
-            let i = 0
+            const numberLength = phoneNumber.length;
+            let i = 0;
             while (i < numberLength) {
                 // ************ DIGIT LEVEL ************
-                let digit = phoneNumber[i] as Digit;
+                const digit = phoneNumber[i] as Digit;
                 if (!currentNode[digit]) {
-                    var nextNode: DigitNode = { terminal: i === numberLength - 1 }; // 1.2
+                    const nextNode: DigitNode = { terminal: i === numberLength - 1 }; // 1.2
                     currentNode[digit] = nextNode;
                     currentNode = currentNode[digit]; // Reassign nodes
                     newNodeHasBeenAdded = true;
@@ -82,5 +77,3 @@ export function PhoneList() {
         print(isTestCaseValid ? "YES" : "NO");
     }
 }
-
-

@@ -1,5 +1,5 @@
 /// <reference path="./std.d.ts" />
-import { PhoneList } from ".";
+import PhoneList from ".";
 import { dump } from "./dump";
 
 const mock = [
@@ -14,45 +14,45 @@ const mock = [
     "123440",
     "12345",
     "98346",
-]
-let output = []
+];
+let output = [];
 beforeEach(() => {
     let mockIndex = 0;
     (window as any).readline = () => {
-        return mock[mockIndex++]
-    }
+        return mock[mockIndex++];
+    };
     output = [];
     (window as any).print = (value: string) => {
-        output.push(value)
-    }
-})
+        output.push(value);
+    };
+});
 
 describe("PhoneList", () => {
    
     it("is defined", () => {
-        PhoneList()
-        expect(output).toEqual(["NO", "YES"])
+        PhoneList();
+        expect(output).toEqual(["NO", "YES"]);
+        // expect(PhoneList).toBeDefined();
+    });
+});
+
+describe("Dump", () => {
+    const s: Nodee = {
+        1: { 
+            2: { 3: { 4: { 5: { } } } },
+            8: { 9: { terminal: true}}
+        },
+        9: {
+            1: {
+                1: {
+                    terminal: true,
+                }
+            }
+        }
+    }
+    it("works", () => {
+        console.log(dump(s))
+        // expect(output).toEqual(["NO", "YES"])
         // expect(PhoneList).toBeDefined();
     })
 });
-
-// describe("Dump", () => {
-//     const s: Nodee = {
-//         1: { 
-//             2: { 3: { 4: { 5: { } } } },
-//             8: { 9: { terminal: true}}
-//         },
-//         9: {
-//             1: {
-//                 1: {
-//                     terminal: true,
-//                 }
-//             }
-//         }
-//     }
-//     it("works", () => {
-//         console.log(dump(s))
-//         // expect(output).toEqual(["NO", "YES"])
-//         // expect(PhoneList).toBeDefined();
-//     })
-// });

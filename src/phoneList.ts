@@ -5,7 +5,7 @@
  * each node represents a digit in a phone number;
  * 
  * 1.2 each node is to have `terminal` flag set to `true` if it represents
- * last digit in a phone number;
+ * last digit of a phone number;
  * 
  * 2. Thus:
  * 

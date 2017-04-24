@@ -1,5 +1,3 @@
-/// <reference path="./std.d.ts" />
-
 /**
  * 1. Idea:
  * 

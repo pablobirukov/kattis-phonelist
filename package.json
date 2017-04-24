@@ -5,7 +5,8 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "jest --no-cache",
-    "lint": "tslint --format=stylish src/**/*"
+    "lint": "tslint --format=stylish src/**/*",
+    "build": "tsc && node -e \"const m = require('./dist/phoneList'); console.log(m.default.toString());\" | sed '1d; $d' > dist/kattis-ready.js"
   },
   "author": "",
   "license": "ISC",
